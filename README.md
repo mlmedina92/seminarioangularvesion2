@@ -32,7 +32,7 @@ Este proyecto fue desarrollado como parte del Trabajo Práctico Final del *Semin
 ## 🚀 Cómo probarlo
 
 - Repositorio GitHub: https://github.com/mlmedina92/seminarioangularvesion2
-- Proyecto en StackBlitz:
+- Proyecto en StackBlitz:https://stackblitz.com/~/github.com/mlmedina92/seminarioangularvesion2
 
 ## 📌 URL
 http://localhost:4200/courses (home)
