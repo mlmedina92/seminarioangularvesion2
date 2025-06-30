@@ -31,7 +31,7 @@ Este proyecto fue desarrollado como parte del Trabajo Práctico Final del *Semin
 
 ## 🚀 Cómo probarlo
 
-- Repositorio GitHub: 
+- Repositorio GitHub: https://github.com/mlmedina92/seminarioangularvesion2
 - Proyecto en StackBlitz:
 
 ## 📌 URL
