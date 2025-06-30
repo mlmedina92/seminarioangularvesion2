@@ -1,0 +1,42 @@
+<form [formGroup]="FormSignUp" (submit)="onSubmit()">
+    <div>
+        <label for="username">Usuario</label>
+        <input formControlName="userName" id="username" type="text" />
+    </div>
+
+    <div>
+        <label for="email">Email</label>
+        <input formControlName="email" id="email" type="email" />
+    </div>
+
+    <div [class.invalid]="FormSignUp.get('password')?.valid === false">
+        <label for="password">Contraseña</label>
+        <input formControlName="password" id="password" type="password" />
+        <div>
+            <p *ngIf="FormSignUp.get('password')?.hasError('required')">El password es requerido</p><!-- se muestra si la pasword no esta escrita -->
+            <p *ngIf="FormSignUp.get('password')?.hasError('minlength')">El password debe tener minimo 6 caracteres</p><!-- se muestra si la pasword no coincide -->
+        </div>
+    </div>
+
+    <div>
+        <label for="confirmPassword">Confirmar Contraseña</label>
+        <input formControlName="confirmPassword" id="confirmPassword" type="password" />
+        <!-- mensaje si las contraseñas no coinsiden -->
+        <p *ngIf="FormSignUp.hasError('passwordMismatch')">Las contraseñas no coinciden</p>
+    </div>
+
+    
+    <!-- solo se habila cuando el formulario este completado como se desea, con las correspondientes validaciones-->
+    <button [disabled]="FormSignUp.invalid" type="submit">Sign Up</button>
+    <!-- como por los estilos no vemos si esta o no desabilitado creamos un parrafo que desapareece cuando el usuario complete el formulario correctamente -->
+    <p *ngIf="FormSignUp.invalid">Campos sin completar o erroneos.</p>
+    <p *ngIf="!FormSignUp.invalid">Formulario listo para enviar.</p>
+</form>
+<!-- <pre>
+    {{FormSignUp.get('userName')?.value}}
+    {{FormSignUp.get('userName')?.valid}}
+    {{FormSignUp.get('password')?.value}}
+    {{FormSignUp.get('password')?.valid}}
+    {{FormSignUp.get('email')?.valid}}
+    
+</pre> -->

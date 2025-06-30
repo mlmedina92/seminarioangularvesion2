@@ -1,0 +1,91 @@
+div.intro {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 50px;
+
+    div.content {
+        max-width: 35%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+
+        h1.title {
+            max-width: 100%;
+            font-size: 50px;
+            font-weight: 900;
+            text-transform: capitalize;
+        }
+
+        button.btn-red {
+            background-color: #dd3b3f;
+            font-size: 24px;
+            padding: 5px 20px 5px 20px;
+        }
+    }
+
+    img.saludo {
+        width: 1080*0.35px;
+        height: 1350*0.35px;
+    }
+}
+
+div.beneficios {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 50px;
+
+    div.beneficio-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        svg.bi {
+            color: #288050;
+            height: 42px;
+            width: 42px;
+        }
+
+        p.name-course {
+            font-weight: 600;
+            text-transform: capitalize;
+        }
+    }
+}
+
+div.about{
+
+    div.content {
+        
+        h2 {
+            text-transform: capitalize;
+        }
+    }
+}
+
+div.courses {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 50px;
+
+    div.course-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        img{
+            width: 200px;
+            height: 200px;
+
+        }
+
+        p.name-course {
+            font-weight: 600;
+            text-transform: capitalize;
+
+        }
+    }
+}

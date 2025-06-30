@@ -1,0 +1,60 @@
+<h1>Listas de cursos disponibles</h1>
+<!-- directiva ngFor : forma de angular para generar html DINAMICO , pueden ser ESTRUCTURALES o de atributos(modifica)  -->
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Imagen</th>
+            <th>Curso</th>
+            <th>Duración</th>
+            <th>Precio</th>
+            <th>Stock/cupos</th>
+            <th>Compra</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- PARTE DINAMICA DE LA TABLA  -->
+        <!-- EN BASE A SI HAY O NO STOCK SE RENDERIZA UNA COSA U OTRA  -->
+        <!-- con las directivas generamos html de forma dinamica, es un template de html , no es html puro , los for y if no tienen logica pura son para cuestiones de presentacion y de estilo  -->
+        <!-- track es un id q ayuda a que angular sea mas eficiente -->
+        @for (course of courses; track course.id){
+        <!-- ngClass aplica la clase CSS offer si course.offer es verdadero, para resaltar promociones, por ejemplo. -->
+        <tr [ngClass]="{'offer': course.offer}">
+            <!-- src y alt son data bindings para mostrar la imagen y el nombre del curso.Significa que esos valores vienen desde el archivo TypeScript (.ts) al archivo HTML, y se actualizan automáticamente si cambian en el componente.-->
+            <td><img width="100" height="100" class="img-thumbnail" loading="lazy" [src]="course.image" [alt]="course.name"></td>
+            <td>{{ course.name }}</td>
+            <td>{{ course.duration }}</td>
+            <!-- pipe currency , le pone el signo peso , puede configurarse la cantidad de decimales, etc ya que son funciones  a las que se les puede pasar parametros -->
+            <td>{{ course.price | currency }} </td>
+            <!-- CONDICION: si hay stock -->
+            @if(course.quota > 0){
+                <!-- SE RENDERIZA  -->
+            <td>{{course.quota}} </td>
+            <td>
+                <!-- SELECTOR  -->
+                <!-- [(quantity)]: two-way binding entre el componente padre e hijo.
+                [max]: cantidad máxima permitida.
+                (maxReached): evento que se lanza si se alcanza el máximo -->
+                <!-- el max se pasa del papa al hijo  -->
+                <app-input-integer [(quantity)]="course.quantity" [max]="course.quota"
+                    (maxReached)="maxReached($event)"></app-input-integer>
+                <!-- llamo a addToCart que esta en course-list-component -->
+            </td>
+            <td>
+                <button class="btn btn-outline-success" (click)="addToCart(course)">Comprar</button>
+                <!-- los uoutput son los (), los input son los [] Con el evento click llamo a addToCart() -->
+            </td>
+            <!-- si no hay stock SE RENDERIZA -->
+            }@else{
+            <td><span class="badge text-bg-warning">Sin cupos disponibles</span></td>
+            <td></td>
+            <td><button class="btn btn-outline-success">lista de espera</button></td>
+            }
+        </tr>
+        }@empty{
+        <tr>
+            <td colspan="4">No hay cursos para mostrar</td>
+        </tr>
+        }
+    </tbody>
+</table>

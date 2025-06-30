@@ -1,0 +1,14 @@
+// codigo para sacar las flechitas que van para arriba y para abajo de los input type number 
+/* Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.quantity{
+  display: flex;
+
+  input{
+    max-width:50px ;
+  }
+}

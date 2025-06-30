@@ -1,0 +1,9 @@
+<h4>Carrito de compras</h4>
+<ul>
+    <!-- recorro cada curso del carlist y lo renderiza en pantalla -->
+    @for (course of cartList$ | async; track course.name){
+        <li> 
+            {{course.name}}: {{course.quantity}}
+        </li>
+    }
+</ul>
